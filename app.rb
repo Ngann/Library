@@ -8,19 +8,36 @@ require('./lib/checkout')
 require('./lib/patron')
 require('pry')
 
-# get('/') do
-#   @lists = List.all
-#   erb(:input)
-# end
-#
-# post('/add_list') do
-#   name = params.fetch('name')
-#   list = List.new({:name => name, :id => nil})
-#   list.save
-#   @name = list.name
-#   @lists = List.all
-#   erb(:input)
-# end
+get('/') do
+  erb(:index)
+end
+
+get('/catalogue') do
+  erb(:catalogue)
+end
+
+get('/checkout') do
+  erb(:checkout)
+end
+
+get('/internal') do
+  erb(:internal)
+end
+
+get('/add_books') do
+  @books = Book.all
+  erb(:internal)
+end
+
+post('/add_books') do
+  title = params.fetch('title')
+  author = params.fetch('author')
+  status = params.fetch('status')
+  book = Book.new({:title => title, :author => author, :status => status, :id => nil})
+  book.save
+  @books = Book.all
+  erb(:catalogue)
+end
 #
 # get('/list/:id') do
 #   @list_id = params[:id].to_i

@@ -1,0 +1,5 @@
+<h1>Search catalogue</h1>
+
+<%@books.each do |book|%>
+  <h4><a href="/books/<%= book.id%>"><%= book.title%><%= book.author%></a></h4>
+<% end %>
