@@ -36,8 +36,15 @@ post('/add_books') do
   book = Book.new({:title => title, :author => author, :status => status, :id => nil})
   book.save
   @books = Book.all
-  erb(:catalogue)
+  erb(:internal)
 end
+
+get('/books/:id') do
+  book_id = params.fetch("id").to_i()
+  @book = Book.find(book_id)
+  erb(:book_detail)
+end
+
 #
 # get('/list/:id') do
 #   @list_id = params[:id].to_i

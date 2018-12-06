@@ -16,6 +16,11 @@
   <button type="submit" class="btn-info">Add Book</button>
 </form>
 
+<!-- remove book list when done testing -->
+<p>Books list:</p>
+<%@books.each do |book|%>
+  <h4><a href="/books/<%= book.id%>"><%= book.title%><%= book.author%></a></h4>
+<% end %>
 
 <div class="container">
   <a href="/catalogue">Catalogue</a>
